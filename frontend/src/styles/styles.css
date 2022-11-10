@@ -1,1 +1,466 @@
+/* The new CSS reset - version 1.7.3 (last updated 7.8.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset */
 
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol
+			*)) {
+	all: unset;
+	display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a,
+button {
+	cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol,
+ul,
+menu {
+	list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+	max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+	border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input,
+textarea {
+	-webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+	white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+	-webkit-appearance: revert;
+	appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+	color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+display:revert; revert to element instead of attribute */
+:where([hidden]) {
+	display: none;
+}
+
+/* revert for bug in Chromium browsers
+- fix for the content editable attribute will work properly.
+- webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable='false'])) {
+	-moz-user-modify: read-write;
+	-webkit-user-modify: read-write;
+	overflow-wrap: break-word;
+	-webkit-line-break: after-white-space;
+	-webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable='true']) {
+	-webkit-user-drag: element;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: #202142;
+	color: #fff;
+}
+
+h1 {
+	font-size: 2rem /** 32px */;
+	line-height: 2.5rem /** 40px */;
+}
+
+p {
+	font-size: 1rem /** 16px */;
+	line-height: 1.5rem /** 24px */;
+}
+
+/* @ Spinner */
+
+#loadingSpinnerContainer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 5000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#loadingSpinner {
+	width: 64px;
+	height: 64px;
+	border: 8px solid;
+	border-color: #ff6a95 transparent #ccc transparent;
+	border-radius: 50%;
+	animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+/* @ not found */
+#notfound {
+	background-color: #ff6a95;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: grid;
+	place-content: center;
+	text-align: center;
+}
+
+#notfound h1,
+#notfound h2,
+#notfound button {
+	margin: 1.5rem 0;
+	color: #2c2c2c;
+}
+
+#notfound h1 {
+	font-size: 4rem;
+}
+
+#notfound h2 {
+	font-size: 1.5rem;
+}
+
+#notfound button {
+	font-size: 1.25rem;
+	padding: 1rem 0;
+	color: #f4f4f4;
+	background-color: #2c2c2c;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+#notfound button:hover {
+	color: #fff;
+	background-color: #000;
+}
+/* @ Navigation */
+
+header {
+	position: fixed;
+	z-index: 50;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4rem;
+	background-color: #fff;
+	color: #8f8f8f;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+nav {
+	width: 100%;
+	max-width: 64rem;
+	padding: 0 4.5rem;
+}
+
+#navigation {
+	display: flex;
+	justify-content: space-between;
+	font-weight: 500;
+}
+
+#navigation a:hover {
+	color: #2c2c2c;
+}
+#navigation button:hover {
+	color: #ff6a95;
+}
+
+.selectedNavItem {
+	color: #2c2c2c;
+}
+
+#navigation .btn-logout {
+	cursor: pointer;
+}
+
+/* @ Main */
+
+main {
+	margin: 4rem auto 0;
+	max-width: 64rem;
+	padding: 2rem 4rem 0;
+	color: #333;
+}
+
+.card-header {
+	background-color: #fff;
+	padding: 2rem 2.5rem;
+	border-radius: 1rem;
+}
+
+/* @@ About */
+
+#about * {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+#about h1 {
+	font-weight: 700;
+	margin-bottom: 2.5rem;
+}
+
+#about p {
+	font-weight: 500;
+	font-size: 17px;
+}
+
+/* @@ Feedback */
+
+/* form */
+
+#feedback-form h2 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-align: center;
+	opacity: 0.95;
+}
+
+#feedback-rating {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 2.5rem 0;
+}
+
+#feedback-rating li {
+	position: relative;
+	background-color: #f4f4f4;
+	width: 3.5rem;
+	height: 3.5rem;
+	text-align: center;
+	border-radius: 50%;
+}
+
+#feedback-rating label {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding: 19px;
+	width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	cursor: pointer;
+	font-size: 19px;
+}
+
+#feedback-rating input:checked ~ label {
+	background-color: #ff6a95;
+	color: #f4f4f4;
+}
+
+#feedback-submit {
+	display: flex;
+	border: solid 1px #ccc;
+	border-radius: 0.5rem;
+	padding: 0.5rem 0.625rem;
+}
+
+#feedback-submit #input-text {
+	display: flex;
+	flex-grow: 1;
+}
+
+#input-text::placeholder {
+	color: #6f6f6f;
+}
+
+#feedback-submit button {
+	font-size: 14px;
+	padding: 0.9rem 1.25rem 0.7rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	background-color: #202142;
+	color: #fff;
+}
+
+#feedback-submit button.diabledBtn {
+	background-color: #444;
+	color: #ccc;
+}
+
+#feedback-message {
+	padding-top: 1.25rem;
+	text-align: center;
+	color: rgba(91, 33, 182, 0.8);
+}
+
+/*@@ feedback list */
+
+#feedback-empty {
+	color: #fff;
+	margin: 2rem auto;
+	text-align: center;
+}
+
+/* feedback stats */
+#feedback-stats {
+	display: flex;
+	justify-content: space-between;
+	margin: 2rem auto 2rem;
+	width: 95%;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+/* feedback items */
+.feedback-item-card {
+	position: relative;
+	background-color: #fff;
+	color: #333;
+	border-radius: 4px;
+	padding: 2rem 2.5rem;
+	margin: 1.25rem auto;
+	width: 95%;
+}
+
+.feedback-rating {
+	position: absolute;
+	top: -0.75rem /** -12px */;
+	left: -1.25rem /** -20px */;
+	background-color: #ff6a95;
+	color: #fff;
+	width: 3rem;
+	height: 3rem;
+	padding: 0.8rem;
+	font-size: 20px;
+	text-align: center;
+	border-radius: 50%;
+	border: solid 1px #eee;
+}
+
+.feedback-btn-edit,
+.feedback-btn-delete {
+	position: absolute;
+	cursor: pointer;
+	top: 0.5rem;
+}
+
+#feedback-btn.diabledBtn {
+	cursor: default;
+}
+
+.feedback-btn-edit {
+	right: 2.5rem;
+	font-size: 15px;
+	color: #202142;
+}
+
+.feedback-btn-delete {
+	right: 0.75rem;
+	font-size: 18px;
+	color: #ff6a95;
+}
+
+.feedback-text {
+	font-size: 18px;
+	color: rgba(17, 24, 39, 0.9);
+	margin-left: 0.5rem;
+}
+
+/* @@ auth */
+
+#feedback-auth {
+	color: #fff;
+	padding: 1rem;
+	max-width: 36rem;
+	margin: 0 auto;
+}
+
+#feedback-auth h2 {
+	font-size: 20px;
+	margin: 1rem 0 3rem;
+}
+
+#feedback-auth input {
+	background-color: #f4f4f4;
+	color: #2c2c2c;
+	height: 3rem;
+	width: 100%;
+	padding: 0 1.25rem;
+	border-radius: 1rem;
+	margin: 1rem auto;
+}
+
+#feedback-auth input::placeholder {
+	color: #6f6f6f;
+}
+
+#feedback-auth button {
+	display: block;
+	width: 50%;
+	text-align: center;
+	margin: 5rem auto 0;
+	font-size: 20px;
+	padding: 1rem 2rem;
+	border-radius: 1rem;
+	background-color: #ff6a95;
+	cursor: pointer;
+}
+
+#feedback-auth button.disabledBtn {
+	background-color: #444;
+	color: #ccc;
+	cursor: default;
+}
+
+#link-signup {
+	margin-top: 5rem;
+	font-size: 16px;
+	text-align: center;
+	color: #eee;
+}
+
+#link-signup a {
+	padding: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
