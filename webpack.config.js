@@ -20,9 +20,9 @@ const frontConfig = (env) => {
 		target: 'web',
 		devServer: {
 			static: path.join(__dirname, './frontend/public'),
-			// proxy: {
-			// 	'/': 'http://localhost:8000',
-			// },
+			proxy: {
+				'/': 'http://localhost:8000',
+			},
 			port: 8080,
 			historyApiFallback: true,
 		},
