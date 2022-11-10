@@ -12,6 +12,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// routes
+app.use('/api/auth', require('./routes/authRoutes.js'));
+
 if (process.env.NODE_ENV === 'production') {
 	app.use('/', express.static(path.join(__dirname, '../dist')));
 	app.get('*', (_, res) => {
