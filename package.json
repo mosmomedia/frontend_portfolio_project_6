@@ -4,9 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"serve": "webpack serve",
 		"build": "webpack -w",
 		"dev": "webpack serve --env DEV=true",
+		"server": "node ./backend/server.js",
+		"codev": "concurrently \"npm run server\" \"npm run dev\"",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
@@ -23,6 +24,7 @@
 		"@babel/core": "^7.20.2",
 		"@babel/preset-env": "^7.20.2",
 		"babel-loader": "^9.1.0",
+		"concurrently": "^7.5.0",
 		"css-loader": "^6.7.1",
 		"cz-conventional-changelog": "^3.3.0",
 		"html-webpack-plugin": "^5.5.0",
