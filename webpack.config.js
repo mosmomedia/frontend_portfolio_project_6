@@ -22,6 +22,7 @@ const frontConfig = (env) => {
 			static: path.join(__dirname, './frontend/public'),
 			proxy: {
 				'/api/feedback': 'http://localhost:8000/api/feedback',
+				'/api/auth': 'http://localhost:8000/api/auth',
 			},
 			port: 8080,
 			historyApiFallback: true,

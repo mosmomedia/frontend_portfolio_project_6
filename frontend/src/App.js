@@ -7,7 +7,7 @@ import Feedback from './pages/Feedback.js';
 import SignIn from './pages/SignIn.js';
 import SignUp from './pages/SignUp.js';
 
-// import { loginUser, registerUser } from './contexts/auth/AuthAction.js';
+import { loginUser, registerUser } from './contexts/auth/AuthAction.js';
 
 const routes = [
 	{ path: '/', component: Feedback },
