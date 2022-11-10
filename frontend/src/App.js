@@ -1,7 +1,7 @@
 import Component from './core/Component.js';
 
 import NotFound from './components/shared/NotFound.js';
-// import Header from './components/Header.js';
+import Header from './components/Header.js';
 import About from './pages/About.js';
 import Feedback from './pages/Feedback.js';
 import SignIn from './pages/SignIn.js';
@@ -38,10 +38,10 @@ export default class App extends Component {
 	mounted() {
 		const $header = this.$target.querySelector('header');
 		const { getState, handleLogout } = this;
-		// new Header($header, {
-		// 	getState: getState.bind(this),
-		// 	handleLogout: handleLogout.bind(this),
-		// });
+		new Header($header, {
+			getState: getState.bind(this),
+			handleLogout: handleLogout.bind(this),
+		});
 
 		window.addEventListener('DOMContentLoaded', () => {
 			this.render();
