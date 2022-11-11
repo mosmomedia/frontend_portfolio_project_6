@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const dotenv = require('dotenv');
 
+const nodeExternals = require('webpack-node-externals');
+
 // Node.js - os 모듈 불러오기
 const os = require('os');
 
@@ -93,4 +95,45 @@ const frontConfig = (env) => {
 	};
 };
 
-module.exports = [frontConfig];
+const backConfig = (env) => {
+	const { DEV } = env;
+	if (DEV) {
+		dotenv.config({ path: './dev.env' });
+	} else {
+		dotenv.config({ path: './.env' });
+	}
+
+	return {
+		mode: DEV ? 'development' : 'production',
+		target: 'node',
+		externals: [nodeExternals()],
+		entry: './backend/server.js',
+		output: {
+			path: path.resolve(__dirname, 'dist'),
+			filename: 'bundle-back.js',
+		},
+
+		resolve: {
+			extensions: ['.js'],
+		},
+		module: {
+			rules: [
+				{
+					test: /\.js$/,
+					exclude: /node_modules/,
+					use: {
+						loader: 'babel-loader',
+						options: {
+							presets: ['@babel/preset-env'],
+						},
+					},
+				},
+			],
+		},
+		optimization: {
+			minimize: true,
+		},
+	};
+};
+
+module.exports = [frontConfig, backConfig];
