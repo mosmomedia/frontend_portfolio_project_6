@@ -251,6 +251,19 @@ main {
 	font-size: 17px;
 }
 
+#about_link {
+	color: #ff6a95;
+	text-decoration: underline;
+}
+
+#about ul {
+	margin-top: 1rem;
+}
+
+#about .sub_title {
+	margin-top: 2rem;
+}
+
 /* @@ Feedback */
 
 /* form */
