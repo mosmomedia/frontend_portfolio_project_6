@@ -54,7 +54,6 @@ export default class App extends Component {
 
 	render = (path) => {
 		const _path = path ?? window.location.pathname;
-
 		try {
 			const component =
 				routes.find((route) => route.path === _path)?.component || null;
@@ -68,6 +67,7 @@ export default class App extends Component {
 
 			const $navItem = this.$target.querySelectorAll('a');
 
+			// add style class to a selected nav item
 			$navItem.forEach((element) => {
 				const path = element.getAttribute('href');
 				if (path === _path) {
