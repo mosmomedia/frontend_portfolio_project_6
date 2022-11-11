@@ -3,8 +3,8 @@ import Component from '../core/Component.js';
 export default class SignIn extends Component {
 	setup() {
 		this.$state = {
-			email: '',
-			password: '',
+			email: 'test1@test.com',
+			password: '1234',
 		};
 	}
 
@@ -18,6 +18,7 @@ export default class SignIn extends Component {
 						type="email"
 						name="email"
 						placeholder="Email"
+						value='test1@test.com'
 					/>
 					<input 
 					id='password'
@@ -25,6 +26,7 @@ export default class SignIn extends Component {
 					name="password"
 					autocomplete=''
 					placeholder="Password"
+					value='1234'
 				/>
 				<button id='auth-button' type='submit' disabled class='disabledBtn'>
 					로그인
@@ -37,12 +39,20 @@ export default class SignIn extends Component {
 		`;
 	}
 
+	mounted() {
+		const { email, password } = this.$state;
+		if (email && password) {
+			const $authSubmitBtn = this.$target.querySelector('#auth-button');
+			$authSubmitBtn.removeAttribute('disabled');
+			$authSubmitBtn.removeAttribute('class');
+		}
+	}
+
 	setEvent() {
 		this.addEvent('keyup', 'input', ({ target: { id, value } }) => {
 			const $authSubmitBtn = this.$target.querySelector('#auth-button');
 
 			this.setState({ [id]: value }, 'stopRender');
-
 			const { email, password } = this.$state;
 
 			if (email && password) {

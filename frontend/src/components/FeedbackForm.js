@@ -12,7 +12,7 @@ export default class FeedbackForm extends Component {
 
 	template() {
 		return `
-				<h2>How would you rate your service with us?</h2>
+				<h2>고객 만족도 조사</h2>
 				<ul id='feedback-rating'></ul>
 				<div id='feedback-submit'>
 					<input type="text" id="input-text"required placeholder='리뷰를 남겨주세요.' />
