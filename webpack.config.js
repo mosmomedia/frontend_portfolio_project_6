@@ -2,7 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 const dotenv = require('dotenv');
 
+// Node.js - os 모듈 불러오기
+const os = require('os');
+
 // plugins
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const frontConfig = (env) => {
@@ -70,6 +74,19 @@ const frontConfig = (env) => {
 		},
 
 		devtool: 'inline-source-map',
+
+		optimization: {
+			// 압축
+			minimize: true,
+			// 미니마이저
+			minimizer: [
+				// 플러그인 인스턴스 생성
+				new CssMinimizerPlugin({
+					// CPU 멀티 프로세서 병렬화 옵션 (기본 값: true)
+					parallel: os.cpus().length - 1,
+				}),
+			],
+		},
 		performance: {
 			hints: false,
 		},
