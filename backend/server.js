@@ -12,7 +12,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// routes
+// Routes
+// feedback
+app.use('/api/feedback', require('./routes/feedbackRoutes.js'));
+// users
 app.use('/api/auth', require('./routes/authRoutes.js'));
 
 if (process.env.NODE_ENV === 'production') {

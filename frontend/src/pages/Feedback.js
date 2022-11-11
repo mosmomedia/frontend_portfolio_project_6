@@ -61,6 +61,7 @@ export default class Feedback extends Component {
 			new FeedbackEditForm($feedback, {
 				getCurrentFeedback: getCurrentFeedback.bind(this),
 				editFeedback: editFeedback.bind(this),
+				getState: getState,
 			});
 		} else {
 			const $feedbackForm = this.$target.querySelector('#feedback-form');
