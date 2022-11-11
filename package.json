@@ -3,6 +3,10 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
+	"engines": {
+		"node": "19.0.1",
+		"npm": "8.19.2"
+	},
 	"scripts": {
 		"start": "node ./backend/server.js",
 		"build": "webpack -w",
