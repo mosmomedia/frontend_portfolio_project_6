@@ -14,7 +14,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const frontConfig = (env) => {
 	const { DEV } = env;
 	if (DEV) {
-		dotenv.config({ path: './dev.env' });
+		dotenv.config({ path: './.dev.env' });
 	} else {
 		dotenv.config({ path: './.env' });
 	}
@@ -98,7 +98,7 @@ const frontConfig = (env) => {
 const backConfig = (env) => {
 	const { DEV } = env;
 	if (DEV) {
-		dotenv.config({ path: './dev.env' });
+		dotenv.config({ path: './.dev.env' });
 	} else {
 		dotenv.config({ path: './.env' });
 	}
