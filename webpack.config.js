@@ -19,8 +19,6 @@ const frontConfig = (env) => {
 		dotenv.config({ path: './.env' });
 	}
 
-	console.log(process.env.NODE_ENV);
-
 	return {
 		mode: DEV ? 'development' : 'production',
 		target: 'web',
